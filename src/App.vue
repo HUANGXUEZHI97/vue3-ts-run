@@ -1,37 +1,20 @@
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld
-    msg="Hello Vue 3 + TypeScript + Vite"
-    v-model:count="count"
-    v-model:userInfo="useInfo"
-  />
+  <button @click="count++">{{ count }}</button>
+  <HelloWorld ref="HelloWorld" msg="Hello World!">
+    <template v-slot:name> 123 </template>
+  </HelloWorld>
+  <!-- :is="isTimeToSayBye ? HelloWorld : GoogBye" -->
 </template>
 
-<script lang="ts">
-import { ref, reactive } from "vue";
+<script setup lang="ts">
+import { ref, watchEffect } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
-export default {
-  name: "App",
-  components: {
-    HelloWorld,
-  },
-  setup() {
-    const count = ref(0);
-    const useInfo = reactive({
-      name: "KK",
-      age: 2,
-    });
+import GoodBye from "./components/GoogBye.vue";
 
-    return {
-      useInfo,
-      count,
-    };
-  },
-};
+const count = ref(0);
 </script>
-
-
 
 <style>
 #app {

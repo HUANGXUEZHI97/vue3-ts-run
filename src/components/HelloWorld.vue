@@ -1,22 +1,35 @@
 <template>
-  <h1 v-bind="$attrs" ref="h1">{{ msg }}</h1>
-
-  <button type="button" @click="addCount">count is: {{ count }}</button>
-  <div>{{ userInfo.name }}</div>
+  <h1 v-bind="$attrs">Hello {{ msg }}</h1>
+  <slot name="name"></slot>
 </template>
 
-<script  lang="ts">
+<script lang="ts" setup>
+defineProps({
+  msg: String,
+});
+console.log("hello script setup");
+
+defineExpose({
+  age: 18,
+});
+</script>
+<script lang="ts">
 export default {
-  props: ["count", "userInfo", "msg"],
-  // emits: ["update:count"],
-  setup(props, {}) {},
-  methods: {
-    addCount() {
-      this.$emit("update:count", this.count + 1);
-    },
+  created() {
+    console.log("created");
+  },
+  beforeCreate() {
+    console.log("beforeCreate");
+  },
+  beforeMount() {
+    console.log("beforeMount");
+  },
+  mounted() {
+    console.log("mounted");
   },
 };
 </script>
+
 
 <style scoped>
 a {
