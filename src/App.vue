@@ -2,9 +2,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <button @click="count++">{{ count }}</button>
-  <HelloWorld ref="HelloWorld" msg="Hello World!">
-    <template v-slot:name> 123 </template>
-  </HelloWorld>
+  <HelloWorld msg="Hello World!" />
   <!-- :is="isTimeToSayBye ? HelloWorld : GoogBye" -->
 </template>
 

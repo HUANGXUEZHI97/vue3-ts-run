@@ -1,6 +1,5 @@
 <template>
   <h1 v-bind="$attrs">Hello {{ msg }}</h1>
-  <slot name="name"></slot>
 </template>
 
 <script lang="ts" setup>
