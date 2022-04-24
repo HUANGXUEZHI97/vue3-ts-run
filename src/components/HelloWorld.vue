@@ -3,6 +3,7 @@
   <h2>{{ name }}</h2>
   <h2>{{ useinfo.name }}</h2>
   <h2>{{ data.name }}</h2>
+  <h3 v-if="isLikeVideo">喜欢刷剧</h3>
   <ul>
     <li v-for="hb in data.hobby" :key="hb">
       {{ hb }}
@@ -12,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, computed } from "vue";
 defineProps({
   msg: String,
 });
@@ -35,6 +36,9 @@ let data = reactive({
     salary: "10k",
   },
   hobby: ["刷剧", "吃鸡", "睡觉"],
+});
+let isLikeVideo = computed(() => {
+  return data.hobby[0] === "刷剧";
 });
 console.log(date);
 console.log(name);
